@@ -1646,3 +1646,3941 @@ button{
     </div>
 
 </section>
+<!-- =========================================
+     PART 4 — QUICK VIEW + CART
+========================================= -->
+
+<style>
+
+/* =========================================
+   QUICK VIEW OVERLAY
+========================================= */
+
+.quick-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:18px;
+
+    background:
+    rgba(0,0,0,.82);
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.4s ease;
+
+}
+
+.quick-overlay.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+
+/* =========================================
+   QUICK VIEW BOX
+========================================= */
+
+.quick-box{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:850px;
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    background:#101010;
+
+    border:1px solid
+    rgba(199,164,106,.28);
+
+    box-shadow:
+    0 30px 100px rgba(0,0,0,.7);
+
+    transform:
+    translateY(25px)
+    scale(.97);
+
+    transition:.45s ease;
+
+}
+
+.quick-overlay.show .quick-box{
+
+    transform:
+    translateY(0)
+    scale(1);
+
+}
+
+
+/* CLOSE */
+
+.quick-close{
+
+    position:absolute;
+
+    top:14px;
+    right:14px;
+
+    z-index:5;
+
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    border:1px solid
+    rgba(255,255,255,.22);
+
+    background:rgba(0,0,0,.55);
+
+    color:#fff;
+
+    cursor:pointer;
+
+}
+
+.quick-close:hover{
+
+    background:#c7a46a;
+
+    color:#000;
+
+}
+
+
+/* =========================================
+   QUICK VISUAL
+========================================= */
+
+.quick-visual{
+
+    min-height:440px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+
+    radial-gradient(
+        circle at center,
+        #29251f,
+        #12110f 48%,
+        #070707 80%
+    );
+
+}
+
+
+/* BIG BOTTLE */
+
+.quick-bottle{
+
+    position:relative;
+
+    width:125px;
+    height:215px;
+
+    border:1px solid
+    rgba(255,255,255,.35);
+
+    background:
+
+    linear-gradient(
+        105deg,
+        rgba(255,255,255,.28),
+        rgba(255,255,255,.04) 25%,
+        rgba(0,0,0,.35) 70%,
+        rgba(255,255,255,.15)
+    );
+
+    box-shadow:
+    0 35px 65px rgba(0,0,0,.75);
+
+}
+
+
+/* BOTTLE CAP */
+
+.quick-bottle::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-38px;
+
+    left:34px;
+
+    width:55px;
+    height:40px;
+
+    background:#080808;
+
+    border:1px solid #555;
+
+}
+
+
+/* LABEL */
+
+.quick-bottle::after{
+
+    content:"AROMANIA";
+
+    position:absolute;
+
+    left:12px;
+    right:12px;
+
+    top:78px;
+
+    padding:13px 3px;
+
+    border-top:
+    1px solid #c7a46a;
+
+    border-bottom:
+    1px solid #c7a46a;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    color:#eadcc5;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    text-align:center;
+
+}
+
+
+/* =========================================
+   QUICK DETAILS
+========================================= */
+
+.quick-details{
+
+    padding:55px 35px 35px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+.quick-small{
+
+    color:#c7a46a;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+}
+
+.quick-name{
+
+    margin-top:10px;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:
+    clamp(40px,6vw,62px);
+
+    font-weight:400;
+
+    line-height:.9;
+
+    color:#f3eee8;
+
+}
+
+.quick-price{
+
+    margin-top:18px;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:28px;
+
+    color:#d8c8ae;
+
+}
+
+.quick-description{
+
+    margin-top:20px;
+
+    font-size:11px;
+
+    line-height:1.9;
+
+    color:#88837b;
+
+}
+
+
+/* =========================================
+   DETAILS BADGES
+========================================= */
+
+.quick-badges{
+
+    display:flex;
+
+    gap:7px;
+
+    margin-top:22px;
+
+    flex-wrap:wrap;
+
+}
+
+.quick-badge{
+
+    padding:8px 10px;
+
+    border:1px solid
+    rgba(255,255,255,.12);
+
+    color:#aaa49c;
+
+    font-size:7px;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+}
+
+
+/* =========================================
+   QUANTITY
+========================================= */
+
+.quantity-box{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    width:115px;
+
+    height:42px;
+
+    margin-top:25px;
+
+    border:1px solid
+    rgba(255,255,255,.15);
+
+}
+
+.qty-btn{
+
+    width:35px;
+    height:100%;
+
+    border:0;
+
+    background:transparent;
+
+    color:#c7a46a;
+
+    cursor:pointer;
+
+}
+
+.qty-number{
+
+    color:#fff;
+
+    font-size:11px;
+
+}
+
+
+/* =========================================
+   QUICK ADD
+========================================= */
+
+.quick-add{
+
+    width:100%;
+
+    height:52px;
+
+    margin-top:20px;
+
+    border:1px solid #c7a46a;
+
+    background:#c7a46a;
+
+    color:#080808;
+
+    font-size:9px;
+
+    font-weight:600;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+
+}
+
+.quick-add:hover{
+
+    background:transparent;
+
+    color:#c7a46a;
+
+}
+
+
+/* =========================================
+   CART DRAWER
+========================================= */
+
+.cart-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:10000;
+
+    background:
+    rgba(0,0,0,.65);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.35s ease;
+
+}
+
+.cart-overlay.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+
+.cart-drawer{
+
+    position:absolute;
+
+    right:0;
+    top:0;
+
+    width:
+    min(430px,92vw);
+
+    height:100%;
+
+    background:#0b0b0b;
+
+    border-left:
+    1px solid rgba(199,164,106,.25);
+
+    transform:translateX(100%);
+
+    transition:.45s
+    cubic-bezier(.22,.61,.36,1);
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.cart-overlay.show
+.cart-drawer{
+
+    transform:translateX(0);
+
+}
+
+
+/* CART HEADER */
+
+.cart-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:22px;
+
+    border-bottom:
+    1px solid rgba(255,255,255,.10);
+
+}
+
+.cart-title{
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:32px;
+
+    font-weight:400;
+
+}
+
+.cart-close{
+
+    width:36px;
+    height:36px;
+
+    border-radius:50%;
+
+    border:1px solid
+    rgba(255,255,255,.2);
+
+    background:transparent;
+
+    color:#fff;
+
+}
+
+
+/* CART ITEMS */
+
+.cart-items{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:18px;
+
+}
+
+.empty-cart{
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    color:#777;
+
+}
+
+.empty-cart i{
+
+    color:#c7a46a;
+
+    font-size:35px;
+
+    margin-bottom:15px;
+
+}
+
+.empty-cart p{
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:25px;
+
+    color:#bbb;
+
+}
+
+
+/* CART ITEM */
+
+.cart-item{
+
+    display:flex;
+
+    gap:13px;
+
+    padding:14px 0;
+
+    border-bottom:
+    1px solid rgba(255,255,255,.08);
+
+}
+
+.cart-thumb{
+
+    width:65px;
+    height:75px;
+
+    flex:none;
+
+    background:
+    radial-gradient(
+        circle,
+        #302a20,
+        #0c0c0c
+    );
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+}
+
+.cart-mini-bottle{
+
+    width:25px;
+    height:43px;
+
+    border:1px solid #aaa;
+
+    background:#151515;
+
+}
+
+.cart-info{
+
+    flex:1;
+
+}
+
+.cart-product-name{
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:21px;
+
+}
+
+.cart-product-price{
+
+    margin-top:4px;
+
+    color:#c7a46a;
+
+    font-size:11px;
+
+}
+
+.cart-remove{
+
+    margin-top:8px;
+
+    border:0;
+
+    background:none;
+
+    color:#777;
+
+    font-size:8px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+}
+
+
+/* CART FOOTER */
+
+.cart-footer{
+
+    padding:20px;
+
+    border-top:
+    1px solid rgba(255,255,255,.10);
+
+}
+
+.cart-total{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:15px;
+
+}
+
+.cart-total span:first-child{
+
+    color:#888;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+}
+
+.cart-total span:last-child{
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:27px;
+
+    color:#e2d3ba;
+
+}
+
+.whatsapp-order{
+
+    width:100%;
+
+    height:52px;
+
+    border:0;
+
+    background:#c7a46a;
+
+    color:#080808;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    font-weight:600;
+
+    text-transform:uppercase;
+
+}
+
+
+/* =========================================
+   MOBILE QUICK VIEW
+========================================= */
+
+@media(max-width:650px){
+
+    .quick-box{
+
+        display:block;
+
+        max-height:92vh;
+
+        overflow-y:auto;
+
+    }
+
+    .quick-visual{
+
+        min-height:310px;
+
+    }
+
+    .quick-bottle{
+
+        width:95px;
+        height:165px;
+
+    }
+
+    .quick-bottle::before{
+
+        top:-30px;
+
+        left:25px;
+
+        width:45px;
+        height:32px;
+
+    }
+
+    .quick-bottle::after{
+
+        top:58px;
+
+        font-size:10px;
+
+    }
+
+    .quick-details{
+
+        padding:30px 22px 25px;
+
+    }
+
+    .quick-name{
+
+        font-size:43px;
+
+    }
+
+}
+
+</style>
+
+
+
+<!-- =========================================
+     QUICK VIEW POPUP
+========================================= -->
+
+<div
+    class="quick-overlay"
+    id="quickOverlay">
+
+
+    <div class="quick-box">
+
+
+        <button
+            class="quick-close"
+            onclick="closeQuickView()">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <div class="quick-visual">
+
+            <div class="quick-bottle"></div>
+
+        </div>
+
+
+        <div class="quick-details">
+
+            <div
+                class="quick-small"
+                id="quickType">
+
+                AROMANIA SIGNATURE
+
+            </div>
+
+
+            <h2
+                class="quick-name"
+                id="quickName">
+
+                Vanilla Coffee
+
+            </h2>
+
+
+            <div
+                class="quick-price"
+                id="quickPrice">
+
+                ₹349
+
+            </div>
+
+
+            <p class="quick-description">
+
+                A captivating fragrance created
+                for an unforgettable presence.
+                Smooth, elegant and designed
+                to stay with you throughout
+                the day.
+
+            </p>
+
+
+            <div class="quick-badges">
+
+                <span class="quick-badge">
+                    50 ML
+                </span>
+
+                <span class="quick-badge">
+                    25% OIL
+                </span>
+
+                <span class="quick-badge">
+                    LONG LASTING
+                </span>
+
+            </div>
+
+
+            <div class="quantity-box">
+
+                <button
+                    class="qty-btn"
+                    onclick="changeQty(-1)">
+
+                    −
+
+                </button>
+
+
+                <span
+                    class="qty-number"
+                    id="qtyNumber">
+
+                    1
+
+                </span>
+
+
+                <button
+                    class="qty-btn"
+                    onclick="changeQty(1)">
+
+                    +
+
+                </button>
+
+            </div>
+
+
+            <button
+                class="quick-add"
+                onclick="addFromQuickView()">
+
+                Add To Cart
+                &nbsp; • &nbsp;
+                <span id="quickAddPrice">
+                    ₹349
+                </span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     CART
+========================================= -->
+
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCartOutside(event)">
+
+
+    <aside class="cart-drawer">
+
+
+        <div class="cart-header">
+
+            <div class="cart-title">
+                Your Bag
+            </div>
+
+            <button
+                class="cart-close"
+                onclick="closeCart()">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="cart-items"
+            id="cartItems">
+
+            <div class="empty-cart">
+
+                <i class="fa-solid fa-bag-shopping"></i>
+
+                <p>
+                    Your bag is empty
+                </p>
+
+                <span>
+                    Discover your signature scent.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="cart-footer">
+
+            <div class="cart-total">
+
+                <span>
+                    Total
+                </span>
+
+                <span id="cartTotal">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <button
+                class="whatsapp-order"
+                onclick="orderWhatsApp()">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                &nbsp;
+
+                Order On WhatsApp
+
+            </button>
+
+        </div>
+
+
+    </aside>
+
+</div>
+
+
+
+<!-- =========================================
+     PART 4 JAVASCRIPT
+========================================= -->
+
+<script>
+
+let selectedProduct = "";
+let selectedPrice = 0;
+let quantity = 1;
+
+let cart = [];
+
+
+/* =========================================
+   QUICK VIEW
+========================================= */
+
+function quickView(name){
+
+    selectedProduct = name;
+
+    selectedPrice = 349;
+
+    quantity = 1;
+
+    document.getElementById(
+        "quickName"
+    ).textContent = name;
+
+    document.getElementById(
+        "quickPrice"
+    ).textContent = "₹349";
+
+    document.getElementById(
+        "quickAddPrice"
+    ).textContent = "₹349";
+
+    document.getElementById(
+        "qtyNumber"
+    ).textContent = "1";
+
+    document.getElementById(
+        "quickOverlay"
+    ).classList.add("show");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+function closeQuickView(){
+
+    document.getElementById(
+        "quickOverlay"
+    ).classList.remove("show");
+
+    document.body.style.overflow = "";
+
+}
+
+
+/* =========================================
+   QUANTITY
+========================================= */
+
+function changeQty(value){
+
+    quantity += value;
+
+    if(quantity < 1){
+        quantity = 1;
+    }
+
+    document.getElementById(
+        "qtyNumber"
+    ).textContent = quantity;
+
+    document.getElementById(
+        "quickAddPrice"
+    ).textContent =
+    "₹" + (selectedPrice * quantity);
+
+}
+
+
+/* =========================================
+   ADD FROM QUICK VIEW
+========================================= */
+
+function addFromQuickView(){
+
+    addProduct(
+        selectedProduct,
+        selectedPrice,
+        quantity
+    );
+
+    closeQuickView();
+
+    openCart();
+
+}
+
+
+/* =========================================
+   ADD PRODUCT
+========================================= */
+
+function addProduct(
+    name,
+    price,
+    qty = 1
+){
+
+    const existing =
+    cart.find(item =>
+        item.name === name
+    );
+
+    if(existing){
+
+        existing.qty += qty;
+
+    }else{
+
+        cart.push({
+            name:name,
+            price:price,
+            qty:qty
+        });
+
+    }
+
+    renderCart();
+
+}
+
+
+/* =========================================
+   RENDER CART
+========================================= */
+
+function renderCart(){
+
+    const container =
+    document.getElementById(
+        "cartItems"
+    );
+
+    const count =
+    cart.reduce(
+        (sum,item)=>
+        sum + item.qty,
+        0
+    );
+
+    const cartCount =
+    document.querySelector(
+        ".cart-btn .cart-count"
+    );
+
+    if(cartCount){
+
+        cartCount.textContent =
+        count;
+
+    }
+
+
+    if(cart.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-cart">
+
+                <i class="fa-solid fa-bag-shopping"></i>
+
+                <p>
+                    Your bag is empty
+                </p>
+
+                <span>
+                    Discover your signature scent.
+                </span>
+
+            </div>
+
+        `;
+
+        document.getElementById(
+            "cartTotal"
+        ).textContent = "₹0";
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    container.innerHTML = cart.map(
+        (item,index)=>{
+
+            total +=
+            item.price * item.qty;
+
+            return `
+
+                <div class="cart-item">
+
+                    <div class="cart-thumb">
+
+                        <div class="cart-mini-bottle"></div>
+
+                    </div>
+
+
+                    <div class="cart-info">
+
+                        <div class="cart-product-name">
+
+                            ${item.name}
+
+                        </div>
+
+
+                        <div class="cart-product-price">
+
+                            ₹${item.price}
+                            ×
+                            ${item.qty}
+
+                        </div>
+
+
+                        <button
+                            class="cart-remove"
+                            onclick="removeCart(${index})">
+
+                            Remove
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    ).join("");
+
+
+    document.getElementById(
+        "cartTotal"
+    ).textContent =
+    "₹" + total;
+
+}
+
+
+/* =========================================
+   REMOVE
+========================================= */
+
+function removeCart(index){
+
+    cart.splice(index,1);
+
+    renderCart();
+
+}
+
+
+/* =========================================
+   OPEN CART
+========================================= */
+
+function openCart(){
+
+    renderCart();
+
+    document.getElementById(
+        "cartOverlay"
+    ).classList.add("show");
+
+    document.body.style.overflow =
+    "hidden";
+
+}
+
+
+/* =========================================
+   CLOSE CART
+========================================= */
+
+function closeCart(){
+
+    document.getElementById(
+        "cartOverlay"
+    ).classList.remove("show");
+
+    document.body.style.overflow =
+    "";
+
+}
+
+
+function closeCartOutside(event){
+
+    if(event.target.id === "cartOverlay"){
+
+        closeCart();
+
+    }
+
+}
+
+
+/* =========================================
+   WHATSAPP
+========================================= */
+
+function orderWhatsApp(){
+
+    if(cart.length === 0){
+
+        alert(
+            "Please add a perfume to your bag first."
+        );
+
+        return;
+
+    }
+
+
+    let message =
+    "Hello AROMANIA Perfumes,%0A%0A";
+
+    message +=
+    "I want to place an order:%0A%0A";
+
+
+    let total = 0;
+
+
+    cart.forEach(item=>{
+
+        const itemTotal =
+        item.price * item.qty;
+
+        total += itemTotal;
+
+        message +=
+        "• " +
+        item.name +
+        " × " +
+        item.qty +
+        " = ₹" +
+        itemTotal +
+        "%0A";
+
+    });
+
+
+    message +=
+    "%0ATotal: ₹" +
+    total;
+
+
+    const phone =
+    "919582907643";
+
+
+    window.open(
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        message,
+        "_blank"
+    );
+
+}
+
+</script>
+<!-- =========================================
+     PART 5 — MOOD + 8 CATALOGUES
+========================================= -->
+
+<style>
+
+/* =========================================
+   MOOD SECTION
+========================================= */
+
+.mood-section{
+
+    position:relative;
+
+    padding:100px 18px;
+
+    background:#050505;
+
+    overflow:hidden;
+
+}
+
+.mood-head{
+
+    text-align:center;
+
+    max-width:600px;
+
+    margin:0 auto 45px;
+
+}
+
+.mood-kicker{
+
+    color:#c7a46a;
+
+    font-size:8px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+}
+
+.mood-title{
+
+    margin-top:14px;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:
+    clamp(45px,11vw,80px);
+
+    font-weight:400;
+
+    line-height:.9;
+
+}
+
+.mood-title span{
+
+    color:#c7a46a;
+
+    font-style:italic;
+
+}
+
+.mood-text{
+
+    margin-top:20px;
+
+    color:#85817a;
+
+    font-size:11px;
+
+    line-height:1.9;
+
+}
+
+
+/* =========================================
+   MOOD GRID
+========================================= */
+
+.mood-grid{
+
+    max-width:1050px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:10px;
+
+}
+
+.mood-card{
+
+    position:relative;
+
+    min-height:220px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-end;
+
+    padding:20px;
+
+    border:1px solid
+    rgba(255,255,255,.08);
+
+    background:
+    radial-gradient(
+        circle at 70% 25%,
+        rgba(199,164,106,.16),
+        transparent 35%
+    ),
+    linear-gradient(
+        145deg,
+        #181510,
+        #080808
+    );
+
+    cursor:pointer;
+
+    transition:.45s ease;
+
+}
+
+.mood-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:
+    rgba(199,164,106,.45);
+
+}
+
+
+/* LARGE BACKGROUND NUMBER */
+
+.mood-number{
+
+    position:absolute;
+
+    top:8px;
+
+    right:14px;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:75px;
+
+    color:
+    rgba(255,255,255,.035);
+
+}
+
+
+/* MOOD ICON */
+
+.mood-icon{
+
+    position:absolute;
+
+    top:25px;
+
+    left:22px;
+
+    color:#c7a46a;
+
+    font-size:20px;
+
+}
+
+
+/* TEXT */
+
+.mood-card h3{
+
+    position:relative;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:29px;
+
+    font-weight:400;
+
+    color:#eee8df;
+
+}
+
+.mood-card p{
+
+    position:relative;
+
+    margin-top:3px;
+
+    font-size:8px;
+
+    letter-spacing:1.5px;
+
+    color:#807b73;
+
+    text-transform:uppercase;
+
+}
+
+.mood-arrow{
+
+    position:absolute;
+
+    right:18px;
+
+    bottom:20px;
+
+    color:#c7a46a;
+
+    font-size:12px;
+
+}
+
+
+/* =========================================
+   FEATURED MOOD
+========================================= */
+
+.mood-card.featured{
+
+    grid-column:span 2;
+
+    min-height:250px;
+
+    background:
+
+    radial-gradient(
+        circle at 70% 40%,
+        rgba(199,164,106,.25),
+        transparent 38%
+    ),
+    linear-gradient(
+        120deg,
+        #1a1712,
+        #070707
+    );
+
+}
+
+
+/* =========================================
+   CATALOGUE BANNER
+========================================= */
+
+.catalogue-banner{
+
+    position:relative;
+
+    margin-top:90px;
+
+    min-height:430px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    overflow:hidden;
+
+    background:
+
+    radial-gradient(
+        circle at center,
+        rgba(199,164,106,.18),
+        transparent 35%
+    ),
+    #0c0b09;
+
+    border-top:
+    1px solid rgba(199,164,106,.18);
+
+    border-bottom:
+    1px solid rgba(199,164,106,.18);
+
+}
+
+.catalogue-banner::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+    height:260px;
+
+    border:1px solid
+    rgba(199,164,106,.16);
+
+    border-radius:50%;
+
+}
+
+.catalogue-banner::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border:1px solid
+    rgba(199,164,106,.10);
+
+    border-radius:50%;
+
+}
+
+
+.banner-content{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.banner-kicker{
+
+    color:#c7a46a;
+
+    font-size:8px;
+
+    letter-spacing:4px;
+
+}
+
+.banner-title{
+
+    margin-top:15px;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:
+    clamp(44px,11vw,85px);
+
+    line-height:.88;
+
+    font-weight:400;
+
+}
+
+.banner-title em{
+
+    color:#c7a46a;
+
+}
+
+.banner-text{
+
+    max-width:400px;
+
+    margin:20px auto 0;
+
+    color:#8d8880;
+
+    font-size:10px;
+
+    line-height:1.8;
+
+}
+
+.banner-button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:25px;
+
+    padding:15px 25px;
+
+    border:1px solid #c7a46a;
+
+    background:transparent;
+
+    color:#d8c6a7;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+}
+
+
+/* =========================================
+   DESKTOP
+========================================= */
+
+@media(min-width:800px){
+
+    .mood-section{
+
+        padding:
+        130px 50px;
+
+    }
+
+    .mood-grid{
+
+        grid-template-columns:
+        repeat(4,1fr);
+
+        gap:14px;
+
+    }
+
+    .mood-card{
+
+        min-height:280px;
+
+    }
+
+    .mood-card.featured{
+
+        grid-column:span 2;
+
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px){
+
+    .mood-grid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+    .mood-card{
+
+        min-height:205px;
+
+        padding:16px;
+
+    }
+
+    .mood-card h3{
+
+        font-size:24px;
+
+    }
+
+    .mood-card p{
+
+        font-size:7px;
+
+    }
+
+    .mood-card.featured{
+
+        min-height:230px;
+
+    }
+
+}
+
+</style>
+
+
+
+<!-- =========================================
+     CHOOSE YOUR MOOD
+========================================= -->
+
+<section
+    class="mood-section">
+
+
+    <div class="mood-head">
+
+        <div class="mood-kicker">
+
+            Discover Your Scent
+
+        </div>
+
+
+        <h2 class="mood-title">
+
+            What's Your
+            <br>
+
+            <span>Mood Today?</span>
+
+        </h2>
+
+
+        <p class="mood-text">
+
+            From effortless freshness to deep
+            mysterious evenings, discover a
+            fragrance that matches your mood.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="mood-grid">
+
+
+        <!-- 01 -->
+
+        <div
+            class="mood-card featured"
+            onclick="moodAlert('Signature Collection')">
+
+            <span class="mood-number">
+                01
+            </span>
+
+            <span class="mood-icon">
+                <i class="fa-solid fa-crown"></i>
+            </span>
+
+            <h3>
+                Signature
+            </h3>
+
+            <p>
+                The AROMANIA Classics
+            </p>
+
+            <span class="mood-arrow">
+                →
+            </span>
+
+        </div>
+
+
+
+        <!-- 02 -->
+
+        <div
+            class="mood-card"
+            onclick="moodAlert('Fresh Collection')">
+
+            <span class="mood-number">
+                02
+            </span>
+
+            <span class="mood-icon">
+                <i class="fa-solid fa-wind"></i>
+            </span>
+
+            <h3>
+                Fresh
+            </h3>
+
+            <p>
+                Clean &amp; Energetic
+            </p>
+
+            <span class="mood-arrow">
+                →
+            </span>
+
+        </div>
+
+
+
+        <!-- 03 -->
+
+        <div
+            class="mood-card"
+            onclick="moodAlert('Floral Collection')">
+
+            <span class="mood-number">
+                03
+            </span>
+
+            <span class="mood-icon">
+                <i class="fa-solid fa-spa"></i>
+            </span>
+
+            <h3>
+                Floral
+            </h3>
+
+            <p>
+                Soft &amp; Romantic
+            </p>
+
+            <span class="mood-arrow">
+                →
+            </span>
+
+        </div>
+
+
+
+        <!-- 04 -->
+
+        <div
+            class="mood-card"
+            onclick="moodAlert('Oud Collection')">
+
+            <span class="mood-number">
+                04
+            </span>
+
+            <span class="mood-icon">
+                <i class="fa-solid fa-fire"></i>
+            </span>
+
+            <h3>
+                Oud
+            </h3>
+
+            <p>
+                Deep &amp; Intense
+            </p>
+
+            <span class="mood-arrow">
+                →
+            </span>
+
+        </div>
+
+
+
+        <!-- 05 -->
+
+        <div
+            class="mood-card"
+            onclick="moodAlert('Luxury Collection')">
+
+            <span class="mood-number">
+                05
+            </span>
+
+            <span class="mood-icon">
+                <i class="fa-solid fa-gem"></i>
+            </span>
+
+            <h3>
+                Luxury
+            </h3>
+
+            <p>
+                Rich &amp; Refined
+            </p>
+
+            <span class="mood-arrow">
+                →
+            </span>
+
+        </div>
+
+
+
+        <!-- 06 -->
+
+        <div
+            class="mood-card"
+            onclick="moodAlert('Unisex Collection')">
+
+            <span class="mood-number">
+                06
+            </span>
+
+            <span class="mood-icon">
+                <i class="fa-solid fa-circle-half-stroke"></i>
+            </span>
+
+            <h3>
+                Unisex
+            </h3>
+
+            <p>
+                Made For Everyone
+            </p>
+
+            <span class="mood-arrow">
+                →
+            </span>
+
+        </div>
+
+
+
+        <!-- 07 -->
+
+        <div
+            class="mood-card"
+            onclick="moodAlert('Gift Sets')">
+
+            <span class="mood-number">
+                07
+            </span>
+
+            <span class="mood-icon">
+                <i class="fa-solid fa-gift"></i>
+            </span>
+
+            <h3>
+                Gifts
+            </h3>
+
+            <p>
+                Moments To Remember
+            </p>
+
+            <span class="mood-arrow">
+                →
+            </span>
+
+        </div>
+
+
+
+        <!-- 08 -->
+
+        <div
+            class="mood-card"
+            onclick="moodAlert('New Arrivals')">
+
+            <span class="mood-number">
+                08
+            </span>
+
+            <span class="mood-icon">
+                <i class="fa-solid fa-star"></i>
+            </span>
+
+            <h3>
+                New
+            </h3>
+
+            <p>
+                Latest Arrivals
+            </p>
+
+            <span class="mood-arrow">
+                →
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================
+         PREMIUM BANNER
+    ====================================== -->
+
+    <div class="catalogue-banner">
+
+
+        <div class="banner-content">
+
+            <div class="banner-kicker">
+
+                THE ART OF FRAGRANCE
+
+            </div>
+
+
+            <h2 class="banner-title">
+
+                Leave A
+                <br>
+
+                <em>Memory.</em>
+
+            </h2>
+
+
+            <p class="banner-text">
+
+                The right fragrance doesn't
+                simply enter a room.
+                It stays in someone's memory.
+
+            </p>
+
+
+            <a
+                href="#collection"
+                class="banner-button">
+
+                Explore AROMANIA
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<script>
+
+/* =========================================
+   MOOD BUTTON ACTION
+========================================= */
+
+function moodAlert(name){
+
+    alert(
+        name +
+        " will open its fragrance collection."
+    );
+
+}
+
+</script>
+<!-- =========================================
+     PART 6 — FRAGRANCE JOURNEY
+========================================= -->
+
+<style>
+
+/* =========================================
+   FRAGRANCE JOURNEY
+========================================= */
+
+.journey-section{
+
+    position:relative;
+
+    padding:110px 18px;
+
+    background:#f1ede5;
+
+    color:#15130f;
+
+    overflow:hidden;
+
+}
+
+.journey-section::before{
+
+    content:"AROMANIA";
+
+    position:absolute;
+
+    top:80px;
+
+    left:-35px;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:100px;
+
+    letter-spacing:5px;
+
+    color:rgba(0,0,0,.025);
+
+    transform:rotate(-90deg);
+
+}
+
+.journey-head{
+
+    max-width:600px;
+
+    margin:0 auto 55px;
+
+    text-align:center;
+
+}
+
+.journey-kicker{
+
+    color:#96713b;
+
+    font-size:8px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+}
+
+.journey-title{
+
+    margin-top:15px;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:
+    clamp(45px,11vw,78px);
+
+    line-height:.9;
+
+    font-weight:400;
+
+}
+
+.journey-title em{
+
+    color:#96713b;
+
+}
+
+.journey-desc{
+
+    max-width:430px;
+
+    margin:20px auto 0;
+
+    color:#746f67;
+
+    font-size:10px;
+
+    line-height:1.9;
+
+}
+
+
+/* =========================================
+   NOTE CARDS
+========================================= */
+
+.notes-wrapper{
+
+    max-width:1050px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:15px;
+
+}
+
+.note-card{
+
+    position:relative;
+
+    min-height:390px;
+
+    padding:28px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-end;
+
+    border:
+    1px solid rgba(60,45,25,.13);
+
+    background:#e9e3d8;
+
+    overflow:hidden;
+
+    transition:.45s ease;
+
+}
+
+.note-card:hover{
+
+    transform:translateY(-7px);
+
+    box-shadow:
+    0 25px 60px
+    rgba(40,30,15,.10);
+
+}
+
+
+/* HUGE NUMBER */
+
+.note-number{
+
+    position:absolute;
+
+    top:12px;
+
+    right:20px;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:80px;
+
+    color:rgba(50,35,15,.06);
+
+}
+
+
+/* CIRCLE VISUAL */
+
+.note-orb{
+
+    position:absolute;
+
+    top:50px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:135px;
+
+    height:135px;
+
+    border-radius:50%;
+
+    border:
+    1px solid
+    rgba(120,85,40,.18);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.note-orb::before{
+
+    content:"";
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    border:
+    1px solid
+    rgba(120,85,40,.18);
+
+}
+
+.note-orb i{
+
+    position:absolute;
+
+    color:#96713b;
+
+    font-size:24px;
+
+}
+
+
+/* NOTE LABEL */
+
+.note-label{
+
+    color:#96713b;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    margin-bottom:8px;
+
+}
+
+.note-card h3{
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:38px;
+
+    font-weight:400;
+
+}
+
+.note-card p{
+
+    margin-top:7px;
+
+    color:#756f66;
+
+    font-size:10px;
+
+    line-height:1.7;
+
+}
+
+
+/* NOTE TAGS */
+
+.note-tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:6px;
+
+    margin-top:17px;
+
+}
+
+.note-tag{
+
+    padding:6px 9px;
+
+    border:
+    1px solid rgba(100,75,40,.15);
+
+    color:#746550;
+
+    font-size:7px;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+}
+
+
+/* =========================================
+   CENTER LINE
+========================================= */
+
+.journey-line{
+
+    max-width:900px;
+
+    height:1px;
+
+    margin:70px auto 35px;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(120,85,40,.3),
+        transparent
+    );
+
+}
+
+
+/* =========================================
+   QUOTE
+========================================= */
+
+.journey-quote{
+
+    max-width:720px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+
+.journey-quote-icon{
+
+    color:#96713b;
+
+    font-size:20px;
+
+}
+
+.journey-quote h3{
+
+    margin-top:15px;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:
+    clamp(30px,7vw,52px);
+
+    line-height:1;
+
+    font-weight:400;
+
+}
+
+.journey-quote p{
+
+    margin-top:15px;
+
+    color:#837c72;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:700px){
+
+    .journey-section{
+
+        padding:90px 15px;
+
+    }
+
+    .notes-wrapper{
+
+        grid-template-columns:1fr;
+
+        gap:12px;
+
+    }
+
+    .note-card{
+
+        min-height:340px;
+
+    }
+
+    .note-orb{
+
+        width:120px;
+
+        height:120px;
+
+    }
+
+    .note-orb::before{
+
+        width:80px;
+
+        height:80px;
+
+    }
+
+}
+
+
+/* =========================================
+   DESKTOP
+========================================= */
+
+@media(min-width:900px){
+
+    .journey-section{
+
+        padding:
+        140px 50px;
+
+    }
+
+    .note-card{
+
+        min-height:430px;
+
+    }
+
+}
+
+</style>
+
+
+
+<!-- =========================================
+     JOURNEY SECTION
+========================================= -->
+
+<section
+    class="journey-section"
+    id="journey">
+
+
+    <div class="journey-head">
+
+        <div class="journey-kicker">
+
+            The Fragrance Journey
+
+        </div>
+
+
+        <h2 class="journey-title">
+
+            A Scent In
+            <br>
+
+            <em>Three Acts.</em>
+
+        </h2>
+
+
+        <p class="journey-desc">
+
+            Every AROMANIA fragrance unfolds
+            slowly. A first impression,
+            a beautiful heart and a lasting
+            signature that stays with you.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="notes-wrapper">
+
+
+        <!-- =================================
+             TOP NOTES
+        ================================== -->
+
+        <div class="note-card">
+
+
+            <span class="note-number">
+                01
+            </span>
+
+
+            <div class="note-orb">
+
+                <i class="fa-solid fa-wind"></i>
+
+            </div>
+
+
+            <div class="note-label">
+
+                First Impression
+
+            </div>
+
+
+            <h3>
+                Top Notes
+            </h3>
+
+
+            <p>
+
+                The first few moments
+                of your fragrance.
+                Fresh, bright and
+                instantly captivating.
+
+            </p>
+
+
+            <div class="note-tags">
+
+                <span class="note-tag">
+                    Citrus
+                </span>
+
+                <span class="note-tag">
+                    Fresh
+                </span>
+
+                <span class="note-tag">
+                    Bergamot
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================
+             HEART NOTES
+        ================================== -->
+
+        <div class="note-card">
+
+
+            <span class="note-number">
+                02
+            </span>
+
+
+            <div class="note-orb">
+
+                <i class="fa-solid fa-spa"></i>
+
+            </div>
+
+
+            <div class="note-label">
+
+                The Character
+
+            </div>
+
+
+            <h3>
+                Heart Notes
+            </h3>
+
+
+            <p>
+
+                The true personality
+                of the fragrance begins
+                to reveal itself with
+                elegant floral depth.
+
+            </p>
+
+
+            <div class="note-tags">
+
+                <span class="note-tag">
+                    Rose
+                </span>
+
+                <span class="note-tag">
+                    Jasmine
+                </span>
+
+                <span class="note-tag">
+                    Floral
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================
+             BASE NOTES
+        ================================== -->
+
+        <div class="note-card">
+
+
+            <span class="note-number">
+                03
+            </span>
+
+
+            <div class="note-orb">
+
+                <i class="fa-solid fa-moon"></i>
+
+            </div>
+
+
+            <div class="note-label">
+
+                The Lasting Signature
+
+            </div>
+
+
+            <h3>
+                Base Notes
+            </h3>
+
+
+            <p>
+
+                Deep, warm and memorable.
+                The final layer that
+                remains long after
+                the first spray.
+
+            </p>
+
+
+            <div class="note-tags">
+
+                <span class="note-tag">
+                    Musk
+                </span>
+
+                <span class="note-tag">
+                    Amber
+                </span>
+
+                <span class="note-tag">
+                    Woods
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================
+         DIVIDER
+    ====================================== -->
+
+    <div class="journey-line"></div>
+
+
+
+    <!-- =====================================
+         QUOTE
+    ====================================== -->
+
+    <div class="journey-quote">
+
+        <div class="journey-quote-icon">
+
+            <i class="fa-solid fa-quote-left"></i>
+
+        </div>
+
+
+        <h3>
+
+            “Your fragrance is
+            <br>
+            your invisible signature.”
+
+        </h3>
+
+
+        <p>
+
+            AROMANIA · ESSENCE OF ELEGANCE
+
+        </p>
+
+    </div>
+
+
+</section>
+<!-- =========================================
+     PART 7 — BRAND STORY
+========================================= -->
+
+<style>
+
+/* =========================================
+   BRAND STORY SECTION
+========================================= */
+
+.story-section{
+
+    position:relative;
+
+    padding:110px 18px;
+
+    background:#070707;
+
+    color:#eee8df;
+
+    overflow:hidden;
+
+}
+
+.story-section::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    right:-250px;
+
+    top:100px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(199,164,106,.12),
+        transparent 65%
+    );
+
+    pointer-events:none;
+
+}
+
+
+/* =========================================
+   STORY HEADER
+========================================= */
+
+.story-header{
+
+    max-width:650px;
+
+    margin:0 auto 60px;
+
+    text-align:center;
+
+}
+
+.story-kicker{
+
+    color:#c7a46a;
+
+    font-size:8px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+}
+
+.story-title{
+
+    margin-top:16px;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:
+    clamp(45px,11vw,82px);
+
+    font-weight:400;
+
+    line-height:.88;
+
+}
+
+.story-title em{
+
+    color:#c7a46a;
+
+    font-style:italic;
+
+}
+
+.story-description{
+
+    max-width:450px;
+
+    margin:22px auto 0;
+
+    color:#89847c;
+
+    font-size:10px;
+
+    line-height:1.9;
+
+}
+
+
+/* =========================================
+   STORY CONTENT
+========================================= */
+
+.story-content{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:60px;
+
+    align-items:center;
+
+}
+
+
+/* =========================================
+   VISUAL
+========================================= */
+
+.story-visual{
+
+    position:relative;
+
+    min-height:500px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:
+
+    radial-gradient(
+        circle at center,
+        rgba(199,164,106,.18),
+        transparent 35%
+    ),
+
+    linear-gradient(
+        145deg,
+        #16130e,
+        #080808
+    );
+
+    border:
+    1px solid rgba(199,164,106,.15);
+
+}
+
+.story-ring{
+
+    position:absolute;
+
+    width:300px;
+
+    height:300px;
+
+    border:
+    1px solid rgba(199,164,106,.22);
+
+    border-radius:50%;
+
+    animation:
+    storyRotate 18s linear infinite;
+
+}
+
+.story-ring::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:25px;
+
+    border:
+    1px solid rgba(199,164,106,.13);
+
+    border-radius:50%;
+
+}
+
+.story-ring::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:55px;
+
+    border:
+    1px solid rgba(255,255,255,.07);
+
+    border-radius:50%;
+
+}
+
+.story-bottle{
+
+    position:relative;
+
+    z-index:2;
+
+    width:130px;
+
+    height:245px;
+
+    border-radius:
+    18px 18px 24px 24px;
+
+    background:
+
+    linear-gradient(
+        110deg,
+        #171717,
+        #3b3328,
+        #111
+    );
+
+    border:
+    1px solid
+    rgba(255,255,255,.16);
+
+    box-shadow:
+
+    0 35px 80px
+    rgba(0,0,0,.8),
+
+    inset 8px 0 20px
+    rgba(255,255,255,.05);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.story-bottle::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-38px;
+
+    width:60px;
+
+    height:42px;
+
+    border-radius:
+    5px 5px 2px 2px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #151515,
+        #8b744f,
+        #171717
+    );
+
+    border:
+    1px solid rgba(255,255,255,.12);
+
+}
+
+.story-label{
+
+    text-align:center;
+
+    padding:20px 10px;
+
+    border:
+    1px solid
+    rgba(199,164,106,.35);
+
+    width:90px;
+
+}
+
+.story-label strong{
+
+    display:block;
+
+    color:#c7a46a;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:17px;
+
+    letter-spacing:2px;
+
+}
+
+.story-label small{
+
+    display:block;
+
+    margin-top:5px;
+
+    color:#d6d0c7;
+
+    font-size:5px;
+
+    letter-spacing:2px;
+
+}
+
+
+/* =========================================
+   ROTATION
+========================================= */
+
+@keyframes storyRotate{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* =========================================
+   STORY TEXT
+========================================= */
+
+.story-copy{
+
+    padding:10px 0;
+
+}
+
+.story-copy-kicker{
+
+    color:#c7a46a;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+}
+
+.story-copy h3{
+
+    margin-top:15px;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:
+    clamp(34px,7vw,58px);
+
+    line-height:.95;
+
+    font-weight:400;
+
+}
+
+.story-copy h3 span{
+
+    color:#c7a46a;
+
+}
+
+.story-copy p{
+
+    margin-top:22px;
+
+    color:#858078;
+
+    font-size:10px;
+
+    line-height:2;
+
+}
+
+
+/* =========================================
+   STORY POINTS
+========================================= */
+
+.story-points{
+
+    margin-top:30px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+.story-point{
+
+    display:flex;
+
+    gap:14px;
+
+    align-items:flex-start;
+
+}
+
+.story-point-icon{
+
+    flex-shrink:0;
+
+    width:30px;
+
+    height:30px;
+
+    border:
+    1px solid
+    rgba(199,164,106,.35);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#c7a46a;
+
+    font-size:10px;
+
+}
+
+.story-point h4{
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:20px;
+
+    font-weight:400;
+
+}
+
+.story-point p{
+
+    margin-top:3px;
+
+    font-size:8px;
+
+    line-height:1.5;
+
+    color:#706c66;
+
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.story-stats{
+
+    max-width:1050px;
+
+    margin:80px auto 0;
+
+    padding-top:35px;
+
+    border-top:
+    1px solid
+    rgba(255,255,255,.08);
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    text-align:center;
+
+}
+
+.story-stat{
+
+    padding:10px;
+
+    border-right:
+    1px solid
+    rgba(255,255,255,.07);
+
+}
+
+.story-stat:last-child{
+
+    border-right:none;
+
+}
+
+.story-stat strong{
+
+    display:block;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:38px;
+
+    font-weight:400;
+
+    color:#d8c4a0;
+
+}
+
+.story-stat span{
+
+    display:block;
+
+    margin-top:5px;
+
+    color:#77716a;
+
+    font-size:7px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:700px){
+
+    .story-section{
+
+        padding:90px 15px;
+
+    }
+
+    .story-content{
+
+        grid-template-columns:1fr;
+
+        gap:45px;
+
+    }
+
+    .story-visual{
+
+        min-height:420px;
+
+    }
+
+    .story-ring{
+
+        width:250px;
+
+        height:250px;
+
+    }
+
+    .story-bottle{
+
+        width:115px;
+
+        height:220px;
+
+    }
+
+    .story-stats{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+        gap:0;
+
+    }
+
+    .story-stat{
+
+        padding:18px 8px;
+
+        border-bottom:
+        1px solid
+        rgba(255,255,255,.07);
+
+    }
+
+    .story-stat:nth-child(2){
+
+        border-right:none;
+
+    }
+
+    .story-stat strong{
+
+        font-size:32px;
+
+    }
+
+}
+
+
+/* =========================================
+   DESKTOP
+========================================= */
+
+@media(min-width:900px){
+
+    .story-section{
+
+        padding:
+        140px 50px;
+
+    }
+
+}
+
+</style>
+
+
+
+<!-- =========================================
+     BRAND STORY
+========================================= -->
+
+<section
+    class="story-section"
+    id="about">
+
+
+    <div class="story-header">
+
+        <div class="story-kicker">
+
+            The AROMANIA Story
+
+        </div>
+
+
+        <h2 class="story-title">
+
+            More Than
+            <br>
+
+            <em>A Fragrance.</em>
+
+        </h2>
+
+
+        <p class="story-description">
+
+            AROMANIA is created for people
+            who believe that fragrance is not
+            simply something you wear —
+            it is something people remember.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="story-content">
+
+
+        <!-- =================================
+             VISUAL
+        ================================== -->
+
+        <div class="story-visual">
+
+
+            <div class="story-ring"></div>
+
+
+            <div class="story-bottle">
+
+                <div class="story-label">
+
+                    <strong>
+                        AROMANIA
+                    </strong>
+
+                    <small>
+                        ESSENCE OF ELEGANCE
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================
+             STORY COPY
+        ================================== -->
+
+        <div class="story-copy">
+
+
+            <div class="story-copy-kicker">
+
+                Crafted For Presence
+
+            </div>
+
+
+            <h3>
+
+                Wear Your
+                <br>
+
+                <span>Signature.</span>
+
+            </h3>
+
+
+            <p>
+
+                Every AROMANIA fragrance is
+                designed around one simple idea:
+                your scent should feel like you.
+
+                <br><br>
+
+                From fresh everyday moments
+                to unforgettable evenings,
+                our collection brings together
+                character, elegance and lasting
+                presence.
+
+            </p>
+
+
+
+            <div class="story-points">
+
+
+                <!-- POINT 1 -->
+
+                <div class="story-point">
+
+                    <div class="story-point-icon">
+
+                        <i class="fa-solid fa-droplet"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h4>
+                            Rich Concentration
+                        </h4>
+
+                        <p>
+                            Designed for a richer,
+                            longer fragrance experience.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- POINT 2 -->
+
+                <div class="story-point">
+
+                    <div class="story-point-icon">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h4>
+                            Made To Last
+                        </h4>
+
+                        <p>
+                            Fragrance created to stay
+                            with you throughout the day.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- POINT 3 -->
+
+                <div class="story-point">
+
+                    <div class="story-point-icon">
+
+                        <i class="fa-solid fa-feather-pointed"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h4>
+                            Effortless Elegance
+                        </h4>
+
+                        <p>
+                            A modern fragrance experience
+                            with a timeless character.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================
+         BRAND STATS
+    ====================================== -->
+
+    <div class="story-stats">
+
+
+        <div class="story-stat">
+
+            <strong>
+                25%
+            </strong>
+
+            <span>
+                Oil Concentration
+            </span>
+
+        </div>
+
+
+        <div class="story-stat">
+
+            <strong>
+                50ML
+            </strong>
+
+            <span>
+                Signature Size
+            </span>
+
+        </div>
+
+
+        <div class="story-stat">
+
+            <strong>
+                08
+            </strong>
+
+            <span>
+                Collections
+            </span>
+
+        </div>
+
+
+        <div class="story-stat">
+
+            <strong>
+                ∞
+            </strong>
+
+            <span>
+                Memories
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+</section>
