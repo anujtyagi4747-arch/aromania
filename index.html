@@ -509,3 +509,1140 @@ button{
 
 
 </section>
+<!-- ================================
+     PART 2 — PREMIUM INTRO SECTION
+================================ -->
+
+
+<style>
+
+.premium-intro{
+    position:relative;
+    padding:95px 22px 105px;
+    background:
+    radial-gradient(
+        circle at 50% 0%,
+        rgba(199,164,106,.10),
+        transparent 38%
+    ),
+    #070707;
+    text-align:center;
+    overflow:hidden;
+}
+
+
+/* BIG BACKGROUND TEXT */
+
+.premium-intro::before{
+
+    content:"AROMANIA";
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:
+    translate(-50%,-50%);
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:
+    clamp(90px,23vw,300px);
+
+    letter-spacing:8px;
+
+    color:
+    rgba(255,255,255,.018);
+
+    white-space:nowrap;
+
+    pointer-events:none;
+}
+
+
+/* GOLD LINE */
+
+.intro-line{
+
+    width:42px;
+    height:1px;
+
+    margin:0 auto 18px;
+
+    background:#c7a46a;
+
+}
+
+
+/* SMALL TITLE */
+
+.intro-kicker{
+
+    position:relative;
+
+    font-size:9px;
+
+    letter-spacing:4px;
+
+    color:#c7a46a;
+
+    text-transform:uppercase;
+
+}
+
+
+/* MAIN TITLE */
+
+.intro-title{
+
+    position:relative;
+
+    margin-top:18px;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:
+    clamp(43px,11vw,78px);
+
+    line-height:.95;
+
+    font-weight:400;
+
+    color:#f3eee7;
+
+}
+
+
+/* GOLD WORD */
+
+.intro-title span{
+
+    color:#c7a46a;
+
+    font-style:italic;
+
+}
+
+
+/* DESCRIPTION */
+
+.intro-description{
+
+    position:relative;
+
+    max-width:600px;
+
+    margin:25px auto 0;
+
+    font-size:12px;
+
+    line-height:2;
+
+    color:#99948d;
+
+    font-weight:300;
+
+}
+
+
+/* THREE VALUES */
+
+.intro-values{
+
+    position:relative;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    max-width:700px;
+
+    margin:55px auto 0;
+
+    border-top:
+    1px solid rgba(255,255,255,.10);
+
+    border-bottom:
+    1px solid rgba(255,255,255,.10);
+
+}
+
+
+.intro-value{
+
+    padding:28px 10px;
+
+    border-right:
+    1px solid rgba(255,255,255,.10);
+
+}
+
+
+.intro-value:last-child{
+
+    border-right:none;
+
+}
+
+
+.intro-icon{
+
+    color:#c7a46a;
+
+    font-size:17px;
+
+    margin-bottom:12px;
+
+}
+
+
+.intro-value h3{
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:21px;
+
+    font-weight:500;
+
+    color:#eee8df;
+
+}
+
+
+.intro-value p{
+
+    margin-top:6px;
+
+    font-size:8px;
+
+    line-height:1.7;
+
+    letter-spacing:1px;
+
+    color:#77736d;
+
+    text-transform:uppercase;
+
+}
+
+
+/* SIGNATURE */
+
+.intro-signature{
+
+    position:relative;
+
+    margin-top:40px;
+
+    font-family:
+    "Cormorant Garamond",serif;
+
+    font-size:24px;
+
+    font-style:italic;
+
+    color:#d5c4a5;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .premium-intro{
+
+        padding:
+        85px 20px 90px;
+
+    }
+
+    .intro-values{
+
+        grid-template-columns:1fr;
+
+        max-width:280px;
+
+    }
+
+    .intro-value{
+
+        border-right:none;
+
+        border-bottom:
+        1px solid rgba(255,255,255,.10);
+
+        padding:22px 10px;
+
+    }
+
+    .intro-value:last-child{
+
+        border-bottom:none;
+
+    }
+
+    .intro-description{
+
+        font-size:11px;
+
+    }
+
+}
+
+</style>
+
+
+
+<!-- ================================
+     BRAND INTRO
+================================ -->
+
+<section
+    class="premium-intro"
+    id="about">
+
+
+    <div class="intro-line"></div>
+
+
+    <div class="intro-kicker">
+
+        AROMANIA PERFUMES
+
+    </div>
+
+
+    <h2 class="intro-title">
+
+        More Than A
+        <br>
+
+        <span>Fragrance.</span>
+
+    </h2>
+
+
+    <p class="intro-description">
+
+        A fragrance is not simply something
+        you wear. It becomes a part of your
+        presence, your memories and the
+        impression you leave behind.
+
+        <br><br>
+
+        AROMANIA brings together captivating
+        fragrance profiles, long-lasting
+        performance and the essence of
+        modern elegance.
+
+    </p>
+
+
+
+    <!-- VALUES -->
+
+    <div class="intro-values">
+
+
+        <div class="intro-value">
+
+            <div class="intro-icon">
+
+                <i class="fa-solid fa-droplet"></i>
+
+            </div>
+
+            <h3>
+                25% Oil
+            </h3>
+
+            <p>
+                Concentration
+            </p>
+
+        </div>
+
+
+
+        <div class="intro-value">
+
+            <div class="intro-icon">
+
+                <i class="fa-regular fa-clock"></i>
+
+            </div>
+
+            <h3>
+                Long Lasting
+            </h3>
+
+            <p>
+                Fragrance Experience
+            </p>
+
+        </div>
+
+
+
+        <div class="intro-value">
+
+            <div class="intro-icon">
+
+                <i class="fa-regular fa-gem"></i>
+
+            </div>
+
+            <h3>
+                Inspired
+            </h3>
+
+            <p>
+                High-End Fragrances
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="intro-signature">
+
+        Essence of Elegance
+
+    </div>
+
+
+</section>
+<!-- =========================================
+     PART 3 — SIGNATURE COLLECTION
+========================================= -->
+
+<style>
+
+.collection{
+    position:relative;
+    padding:90px 18px 100px;
+    background:#0a0a0a;
+    overflow:hidden;
+}
+
+
+/* SECTION HEADER */
+
+.collection-head{
+    max-width:900px;
+    margin:0 auto 45px;
+    text-align:center;
+}
+
+.collection-kicker{
+    font-size:8px;
+    letter-spacing:4px;
+    color:#c7a46a;
+    text-transform:uppercase;
+}
+
+.collection-title{
+    margin-top:14px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(45px,11vw,82px);
+    font-weight:400;
+    line-height:.9;
+    color:#f3eee7;
+}
+
+.collection-title em{
+    color:#c7a46a;
+    font-weight:300;
+}
+
+.collection-desc{
+    max-width:520px;
+    margin:20px auto 0;
+    color:#88847d;
+    font-size:11px;
+    line-height:1.8;
+}
+
+
+/* CATEGORY FILTER */
+
+.collection-filter{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    overflow-x:auto;
+    padding:5px 0 18px;
+    margin-bottom:28px;
+    scrollbar-width:none;
+}
+
+.collection-filter::-webkit-scrollbar{
+    display:none;
+}
+
+.filter-btn{
+    flex:none;
+    padding:11px 17px;
+    border:1px solid rgba(255,255,255,.13);
+    background:transparent;
+    color:#aaa49b;
+    font-size:8px;
+    letter-spacing:1.8px;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:.35s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+    background:#c7a46a;
+    border-color:#c7a46a;
+    color:#080808;
+}
+
+
+/* PRODUCT GRID */
+
+.product-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+
+/* PRODUCT CARD */
+
+.product-card{
+    position:relative;
+    background:#111;
+    overflow:hidden;
+    min-height:365px;
+    border:1px solid rgba(255,255,255,.07);
+    transition:.45s ease;
+}
+
+.product-card:hover{
+    border-color:rgba(199,164,106,.4);
+    transform:translateY(-5px);
+}
+
+
+/* PRODUCT VISUAL */
+
+.product-visual{
+    position:relative;
+    height:275px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    background:
+    radial-gradient(
+        circle at center,
+        #29251e 0%,
+        #15130f 42%,
+        #090909 78%
+    );
+}
+
+.product-visual::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        135deg,
+        transparent 40%,
+        rgba(255,255,255,.055),
+        transparent 60%
+    );
+    pointer-events:none;
+}
+
+
+/* TEMPORARY PERFUME BOTTLE */
+
+.bottle{
+    position:relative;
+    width:88px;
+    height:150px;
+    border:1px solid rgba(255,255,255,.3);
+    background:
+    linear-gradient(
+        100deg,
+        rgba(255,255,255,.28),
+        rgba(255,255,255,.05) 25%,
+        rgba(0,0,0,.2) 70%,
+        rgba(255,255,255,.12)
+    );
+    box-shadow:
+    0 25px 50px rgba(0,0,0,.7);
+    transition:.5s ease;
+}
+
+.product-card:hover .bottle{
+    transform:translateY(-8px) rotate(-2deg);
+}
+
+.bottle::before{
+    content:"";
+    position:absolute;
+    top:-28px;
+    left:25px;
+    width:38px;
+    height:30px;
+    background:#090909;
+    border:1px solid #555;
+}
+
+.bottle::after{
+    content:"AROMANIA";
+    position:absolute;
+    left:8px;
+    right:8px;
+    top:55px;
+    padding:10px 2px;
+    border-top:1px solid #c7a46a;
+    border-bottom:1px solid #c7a46a;
+    color:#e7d8bf;
+    font-family:"Cormorant Garamond",serif;
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-align:center;
+}
+
+
+/* PRODUCT NUMBER */
+
+.product-number{
+    position:absolute;
+    top:15px;
+    left:15px;
+    z-index:2;
+    color:#77716a;
+    font-size:8px;
+    letter-spacing:2px;
+}
+
+
+/* QUICK VIEW */
+
+.quick-view{
+    position:absolute;
+    right:12px;
+    top:12px;
+    z-index:3;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.22);
+    background:rgba(0,0,0,.5);
+    color:#fff;
+    cursor:pointer;
+    transition:.3s ease;
+}
+
+.quick-view:hover{
+    background:#c7a46a;
+    color:#000;
+    border-color:#c7a46a;
+}
+
+
+/* PRODUCT INFO */
+
+.product-info{
+    padding:17px 16px 20px;
+}
+
+.product-type{
+    color:#c7a46a;
+    font-size:7px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.product-name{
+    margin-top:5px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:25px;
+    font-weight:500;
+    color:#f0ebe3;
+}
+
+.product-note{
+    margin-top:3px;
+    color:#77736c;
+    font-size:8px;
+}
+
+.product-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:15px;
+}
+
+.product-price{
+    font-family:"Cormorant Garamond",serif;
+    font-size:20px;
+    color:#ddd0bb;
+}
+
+.add-btn{
+    width:35px;
+    height:35px;
+    border:1px solid #c7a46a;
+    background:transparent;
+    color:#c7a46a;
+    cursor:pointer;
+    transition:.3s ease;
+}
+
+.add-btn:hover{
+    background:#c7a46a;
+    color:#080808;
+}
+
+
+/* FEATURED CARD */
+
+.product-card.featured{
+    grid-column:span 2;
+}
+
+.product-card.featured .product-visual{
+    height:330px;
+}
+
+.product-card.featured .bottle{
+    width:105px;
+    height:180px;
+}
+
+
+/* DESKTOP */
+
+@media(min-width:800px){
+
+    .collection{
+        padding:
+        130px 50px 140px;
+    }
+
+    .product-grid{
+        grid-template-columns:
+        repeat(3,1fr);
+        gap:18px;
+    }
+
+    .product-card.featured{
+        grid-column:span 2;
+    }
+
+}
+
+
+/* SMALL MOBILE */
+
+@media(max-width:370px){
+
+    .product-card{
+        min-height:340px;
+    }
+
+    .product-visual{
+        height:245px;
+    }
+
+    .product-name{
+        font-size:22px;
+    }
+
+}
+
+</style>
+
+
+<!-- =========================================
+     COLLECTION SECTION
+========================================= -->
+
+<section
+    class="collection"
+    id="collection">
+
+
+    <div class="collection-head">
+
+        <div class="collection-kicker">
+            The AROMANIA Collection
+        </div>
+
+        <h2 class="collection-title">
+
+            Find Your
+            <br>
+            <em>Signature Scent.</em>
+
+        </h2>
+
+        <p class="collection-desc">
+
+            Five distinctive fragrance personalities.
+            One unmistakable AROMANIA experience.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- FILTER -->
+
+    <div class="collection-filter">
+
+        <button
+            class="filter-btn active">
+            All
+        </button>
+
+        <button class="filter-btn">
+            Men
+        </button>
+
+        <button class="filter-btn">
+            Women
+        </button>
+
+        <button class="filter-btn">
+            Unisex
+        </button>
+
+        <button class="filter-btn">
+            Best Sellers
+        </button>
+
+    </div>
+
+
+
+    <!-- PRODUCTS -->
+
+    <div class="product-grid">
+
+
+        <!-- VANILLA COFFEE -->
+
+        <article class="product-card featured">
+
+            <div class="product-visual">
+
+                <span class="product-number">
+                    01 / SIGNATURE
+                </span>
+
+                <button
+                    class="quick-view"
+                    onclick="quickView('Vanilla Coffee')">
+
+                    <i class="fa-solid fa-expand"></i>
+
+                </button>
+
+                <div class="bottle"></div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-type">
+                    Warm • Sweet • Addictive
+                </div>
+
+                <h3 class="product-name">
+                    Vanilla Coffee
+                </h3>
+
+                <div class="product-note">
+                    Rich vanilla • Coffee • Warm woods
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        ₹349
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        onclick="addProduct('Vanilla Coffee',349)">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- SILKY SMOOTH -->
+
+        <article class="product-card">
+
+            <div class="product-visual">
+
+                <span class="product-number">
+                    02
+                </span>
+
+                <button
+                    class="quick-view"
+                    onclick="quickView('Silky Smooth')">
+
+                    <i class="fa-solid fa-expand"></i>
+
+                </button>
+
+                <div class="bottle"></div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-type">
+                    Elegant • Soft
+                </div>
+
+                <h3 class="product-name">
+                    Silky Smooth
+                </h3>
+
+                <div class="product-note">
+                    Soft florals • Musk • Clean woods
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        ₹349
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        onclick="addProduct('Silky Smooth',349)">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- FLORAL BLOOM -->
+
+        <article class="product-card">
+
+            <div class="product-visual">
+
+                <span class="product-number">
+                    03
+                </span>
+
+                <button
+                    class="quick-view"
+                    onclick="quickView('Floral Bloom')">
+
+                    <i class="fa-solid fa-expand"></i>
+
+                </button>
+
+                <div class="bottle"></div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-type">
+                    Floral • Feminine
+                </div>
+
+                <h3 class="product-name">
+                    Floral Bloom
+                </h3>
+
+                <div class="product-note">
+                    Fresh petals • Rose • Soft musk
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        ₹349
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        onclick="addProduct('Floral Bloom',349)">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- FRESH BREEZE -->
+
+        <article class="product-card">
+
+            <div class="product-visual">
+
+                <span class="product-number">
+                    04
+                </span>
+
+                <button
+                    class="quick-view"
+                    onclick="quickView('Fresh Breeze')">
+
+                    <i class="fa-solid fa-expand"></i>
+
+                </button>
+
+                <div class="bottle"></div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-type">
+                    Fresh • Clean
+                </div>
+
+                <h3 class="product-name">
+                    Fresh Breeze
+                </h3>
+
+                <div class="product-note">
+                    Citrus • Aquatic notes • Musk
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        ₹349
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        onclick="addProduct('Fresh Breeze',349)">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- BLACK AURA -->
+
+        <article class="product-card">
+
+            <div class="product-visual">
+
+                <span class="product-number">
+                    05
+                </span>
+
+                <button
+                    class="quick-view"
+                    onclick="quickView('Black Aura')">
+
+                    <i class="fa-solid fa-expand"></i>
+
+                </button>
+
+                <div class="bottle"></div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-type">
+                    Dark • Bold
+                </div>
+
+                <h3 class="product-name">
+                    Black Aura
+                </h3>
+
+                <div class="product-note">
+                    Dark woods • Amber • Spices
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        ₹349
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        onclick="addProduct('Black Aura',349)">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
